@@ -50,8 +50,8 @@ export default function Index() {
                     </p>
 
                     <form onSubmit={submitHandler} className="space-y-4">
-                        <div className="flex gap-x-3 items-center">
-                            <div>
+                        <div className="flex flex-col md:flex-row gap-3 items-start">
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="nik"
                                     className="block text-sm font-medium"
@@ -77,7 +77,7 @@ export default function Index() {
                                 </p>
                             </div>
 
-                            <div>
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="nama_lengkap"
                                     className="block text-sm font-medium"
@@ -102,7 +102,7 @@ export default function Index() {
                                     {errors.nama_lengkap}
                                 </p>
                             </div>
-                            <div>
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="tempat_lahir"
                                     className="block text-sm font-medium"
@@ -127,8 +127,8 @@ export default function Index() {
                                 </p>
                             </div>
                         </div>
-                        <div className="flex gap-x-3 items-center">
-                            <div>
+                        <div className="flex flex-col md:flex-row gap-3 items-start">
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="tanggal_lahir"
                                     className="block text-sm font-medium"
@@ -153,7 +153,7 @@ export default function Index() {
                                     {errors.tanggal_lahir}
                                 </p>
                             </div>
-                            <div>
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="tanggal_lahir"
                                     className="block text-sm font-medium"
@@ -178,7 +178,7 @@ export default function Index() {
                                     {errors.telp}
                                 </p>
                             </div>
-                            <div>
+                            <div className="w-full md:w-1/3">
                                 <label
                                     htmlFor="avatar"
                                     className="block text-sm font-medium"

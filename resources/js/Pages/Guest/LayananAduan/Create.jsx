@@ -131,6 +131,78 @@ export default function Create({ jenisPengaduan, peta, wilayah }) {
         setData((prev) => ({ ...prev, foto_pengaduan: image }));
     };
 
+    const [locating, setLocating] = useState(false);
+    const useMyLocation = async () => {
+        if (!navigator.geolocation) {
+            Swal.fire({
+                title: "Error",
+                text: "Geolocation tidak didukung oleh browser ini",
+                icon: "error",
+            });
+            return;
+        }
+
+        // If Permissions API is available, check status first to avoid unnecessary prompts
+        try {
+            if (navigator.permissions && navigator.permissions.query) {
+                const status = await navigator.permissions.query({
+                    name: "geolocation",
+                });
+                if (status.state === "denied") {
+                    Swal.fire({
+                        title: "Izin Lokasi Ditolak",
+                        text: "Izin lokasi ditolak untuk situs ini. Aktifkan izin lokasi di pengaturan browser atau gunakan HTTPS/localhost.",
+                        icon: "warning",
+                    });
+                    return;
+                }
+            }
+        } catch (e) {
+            console.debug("Permissions API check failed:", e);
+        }
+
+        setLocating(true);
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const lat = position.coords.latitude;
+                const lng = position.coords.longitude;
+                // reuse existing handleMapClick logic for validation and confirmation
+                handleMapClick({ lat, lng });
+                setLocating(false);
+            },
+            (err) => {
+                console.error("geolocation error", err);
+                if (err.code === 1) {
+                    Swal.fire({
+                        title: "Izin Ditolak",
+                        text: "Anda menolak akses lokasi. Aktifkan izin lokasi di pengaturan browser.",
+                        icon: "error",
+                    });
+                } else if (err.code === 2) {
+                    Swal.fire({
+                        title: "Lokasi Tidak Tersedia",
+                        text: "Tidak dapat menentukan lokasi Anda. Coba lagi atau pilih manual pada peta.",
+                        icon: "error",
+                    });
+                } else if (err.code === 3) {
+                    Swal.fire({
+                        title: "Timeout",
+                        text: "Mencari lokasi memakan waktu terlalu lama. Coba lagi.",
+                        icon: "error",
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Error",
+                        text: "Gagal mendapatkan lokasi. Pastikan izin lokasi diberikan dan situs dijalankan di HTTPS atau localhost.",
+                        icon: "error",
+                    });
+                }
+                setLocating(false);
+            },
+            { enableHighAccuracy: true, timeout: 10000 }
+        );
+    };
+
     const submit = (e) => {
         e.preventDefault();
         if (auth.user == null) {
@@ -304,7 +376,7 @@ export default function Create({ jenisPengaduan, peta, wilayah }) {
                             />
                             <InputError message={errors.deskripsi_pengaduan} />
                         </div>
-                        <button className="bg-blue-500  rounded-md p-2 hover:bg-blue-700 transition-all duration-300 ease-in-out text-white leading-3 tracking-tighter">
+                        <button className="bg-primary rounded-md p-2 hover:opacity-90 transition-all duration-300 ease-in-out text-white leading-3 tracking-tighter">
                             Kirim Pengaduan
                         </button>
                     </form>
@@ -349,6 +421,18 @@ export default function Create({ jenisPengaduan, peta, wilayah }) {
                     pengaduan anda atau silahkan pilih lokasi titik tempat
                     sampah yang ada disekitar lokasi pengaduan
                 </p>
+                <div className="my-3">
+                    <button
+                        type="button"
+                        onClick={useMyLocation}
+                        disabled={locating}
+                        className="btn-primary"
+                    >
+                        {locating
+                            ? "Mencari lokasi..."
+                            : "Gunakan Lokasi Anda Saat Ini"}
+                    </button>
+                </div>
                 <Maps
                     onMapClick={handleMapClick}
                     position={[profile.lat, profile.long]}

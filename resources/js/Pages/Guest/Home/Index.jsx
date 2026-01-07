@@ -24,15 +24,15 @@ export default function Index(props) {
                 <div className="flex flex-col-reverse md:flex-row justify-between items-center gap-4">
                     <div className="w-full">
                         <h1 className="font-bold text-2xl md:text-3xl lg:text-4xl w-full tracking-tight text-primary">
-                            Sistem informasi layanan pengaduan Layanan
-                            Kebersihan DLHK Provinsi Mamuju
+                            Sistem informasi pengaduan Layanan Kebersihan DLHK
+                            Provinsi Mamuju
                         </h1>
-                        <p className="text-xl tracking-tighter font-light text-white font-heebo w-full mt-4">
+                        <p className="text-xl tracking-tighter font-light text-primary w-full mt-4">
                             laporakan masalah kebersihan di lingkungan Anda
                             melalui sistem pengaduan layanan kebersihan dengan
                             mudah dan cepat melalui tombol Pengaduan dibawah ini
                         </p>
-                        <button className="my-3 bg-primary text-white  py-2 px-4 rounded-md mt- hover:bg-white hover:text-primary font-bold text-xl">
+                        <button className="my-3 bg-primary text-white py-2 px-4 rounded-md hover:bg-white hover:text-primary font-bold text-xl">
                             Buat Pengaduan
                         </button>
                     </div>
@@ -47,11 +47,11 @@ export default function Index(props) {
             <div className="bg-background ">
                 <div className="flex flex-col md:flex-row  items-start">
                     <div className="w-full md:w-1/2 bg-primary px-8 py-6 min-h-[300px]">
-                        <h1 className="text-4xl font-bold text-secondary">
+                        <h1 className="text-4xl font-bold text-white">
                             About Me
                         </h1>
                         <p
-                            className="line-clamp-4 font-light tracking-tight mt-6"
+                            className="line-clamp-4 font-light tracking-tight mt-6 text-white/90"
                             dangerouslySetInnerHTML={{
                                 __html: profile.keteragan,
                             }}
@@ -59,7 +59,7 @@ export default function Index(props) {
                         <Link
                             href={route("about_me")}
                             as="button"
-                            className="bg-secondary   py-2 px-4 rounded-md mt- hover:bg-white hover:text-primary font-bold "
+                            className="bg-secondary text-primary py-2 px-4 rounded-md mt-4 hover:opacity-90 font-bold inline-block"
                         >
                             Selengkapnya
                         </Link>
@@ -69,7 +69,7 @@ export default function Index(props) {
                             Sambutan Kepala Dinas
                         </h1>
                         <p
-                            className="line-clamp-4 font-light tracking-tight mt-6"
+                            className="line-clamp-4 font-light tracking-tight mt-6 text-primary"
                             dangerouslySetInnerHTML={{
                                 __html: profile.sambutan,
                             }}

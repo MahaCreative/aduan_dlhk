@@ -26,7 +26,7 @@ export default function Index(props) {
                 break;
             // Tambahkan kondisi lain jika diperlukan
             case "di proses":
-                color = "bg-blue-500"; // Ganti dengan warna yang diinginkan
+                color = "bg-primary"; // Ganti dengan warna yang diinginkan
                 break;
             // Tambahkan kondisi lain jika diperlukan
             case "di batalkan":
@@ -191,7 +191,7 @@ export default function Index(props) {
                                                     onClick={() =>
                                                         deleteHandler(item.id)
                                                     }
-                                                    className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-md text-white"
+                                                    className="bg-primary hover:opacity-90 py-2 px-4 rounded-md text-white"
                                                 >
                                                     Lihat
                                                 </Link>

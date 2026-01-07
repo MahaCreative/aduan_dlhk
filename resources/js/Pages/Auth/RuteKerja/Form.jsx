@@ -95,7 +95,7 @@ export default function Form({ rute }) {
                             setData({
                                 ...data,
                                 kode_warna: `rgba(${e.r}, ${e.g}, ${e.b}, ${
-                                    e.a == NaN ? 1 : e.a
+                                    Number.isNaN(e.a) ? 1 : e.a
                                 })`,
                             })
                         }

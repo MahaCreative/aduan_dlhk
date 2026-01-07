@@ -73,28 +73,22 @@ export default function Index(props) {
         );
     };
     const deleteHandler = (id) => {
-        router.delete(
-            route(
-                "auth.delete-jenis-pengaduan",
-                { id, id },
-                {
-                    onSuccess: () => {
-                        showResponse(
-                            "success",
-                            "Berhasil",
-                            "Berhasil mengahapus 1 jenis pengaduan"
-                        );
-                    },
-                    onError: () => {
-                        showResponse(
-                            "error",
-                            "Gagal",
-                            "Gagal mengahapus 1 jenis pengaduan"
-                        );
-                    },
-                }
-            )
-        );
+        router.delete(route("auth.delete-jenis-pengaduan", { id }), {
+            onSuccess: () => {
+                showResponse(
+                    "success",
+                    "Berhasil",
+                    "Berhasil mengahapus 1 jenis pengaduan"
+                );
+            },
+            onError: () => {
+                showResponse(
+                    "error",
+                    "Gagal",
+                    "Gagal mengahapus 1 jenis pengaduan"
+                );
+            },
+        });
     };
     return (
         <div className="py-6 px-4">

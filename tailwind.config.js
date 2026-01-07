@@ -18,9 +18,17 @@ export default {
                 roboto: ["roboto", ...defaultTheme.fontFamily.sans],
             },
             colors: {
-                primary: "#3A913F",
-                secondary: "#A8E6A1",
+                primary: {
+                    DEFAULT: "#3A913F",
+                    600: "#318231",
+                    700: "#255d27",
+                },
+                secondary: {
+                    DEFAULT: "#A8E6A1",
+                    600: "#86c781",
+                },
                 background: "#CFFFCF",
+                muted: "#6b7280",
             },
         },
     },

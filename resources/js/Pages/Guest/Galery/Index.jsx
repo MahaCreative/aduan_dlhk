@@ -45,7 +45,7 @@ export default function Index(props) {
                             <h1 className="text-primary text-center font-bold text-2xl">
                                 Galery
                             </h1>
-                            <duv className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-7">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-7">
                                 {galery.map((item, key) => (
                                     <Link
                                         as="div"
@@ -55,7 +55,7 @@ export default function Index(props) {
                                         <img
                                             src={"/storage/" + item.thumbnail}
                                             alt={item.judul_berita}
-                                            className="w-[100px] h-[100px]"
+                                            className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-cover rounded"
                                         />
                                         <div>
                                             <h1 className="font-bold text-lg tracking-tight text-primary capitalize group-hover:text-secondary">
@@ -88,7 +88,7 @@ export default function Index(props) {
                                         </div>
                                     </Link>
                                 ))}
-                            </duv>
+                            </div>
                             <div className="w-full flex flex-row  justify-center items-center py-6"></div>
                         </div>
                     )}

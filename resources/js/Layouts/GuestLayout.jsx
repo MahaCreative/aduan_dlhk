@@ -23,10 +23,10 @@ export default function GuestLayout({ children, props }) {
                     <img
                         src={"/storage/" + profile.logo}
                         alt=""
-                        className="w-12 "
+                        className="w-10 md:w-12"
                     />
 
-                    <h1 className="font-nunito font-bold text-2xl tracking-tighter text-secondary capitalize">
+                    <h1 className="font-nunito font-bold text-lg md:text-2xl tracking-tighter text-secondary capitalize">
                         {profile.nama_instansi}
                     </h1>
                 </div>
@@ -241,16 +241,13 @@ export default function GuestLayout({ children, props }) {
                         </Link>
                     </>
                 ) : (
-                    <Link
-                        href={route("login")}
-                        className="font-medium bg-blue-600  text-white hover:bg-blue-500 py-2 px-3 rounded-md hover:text-white"
-                    >
+                    <Link href={route("login")} className="btn-secondary">
                         Login / Register
                     </Link>
                 )}
             </div>
 
-            {children}
+            <main className="container mx-auto px-4 md:px-8">{children}</main>
             {/* <div className="bg-primary min-h-[300px] py-8 px-4 md:px-8 lg:px-16 bg-[url('/storage/image/background2.png')] bg-[contain] bg-left-bottom bg-no-repeat ">
                 <h1 className="text-secondary text-center font-bold text-2xl">
                     Contact Me
@@ -311,7 +308,7 @@ export default function GuestLayout({ children, props }) {
             <div className="bg-primary min-h-[250px] py-8 px-4 md:px-8 lg:px-16 bg-[url('/storage/image/background2.png')] bg-[contain] bg-right-bottom bg-no-repeat flex flex-col gap-3 md:flex-row">
                 <div>
                     <h1 className="font-bold text-2xl text-secondary">
-                        HEAD OFFICE
+                        Kantor DLHK MAMUJU
                     </h1>
                     <div className="my-4">
                         <div className="w-full text-white">
@@ -345,16 +342,16 @@ export default function GuestLayout({ children, props }) {
                 </div>
                 <div className="flex flex-col">
                     <h1 className="font-bold text-2xl text-secondary">
-                        Navigation
+                        Menu Navigasi
                     </h1>
                     <Link className="font-medium  text-white hover:bg-white py-2 px-2 rounded-md hover:text-primary text-sm">
                         Home
-                    </Link>
-                    <Link className="font-medium  text-white hover:bg-white py-2 px-2 rounded-md hover:text-primary text-sm">
-                        Profile Kantor
-                    </Link>
-                    <Link className="font-medium  text-white hover:bg-white py-2 px-2 rounded-md hover:text-primary text-sm">
-                        Kontak Kami
+                        <Link
+                            href={route("login")}
+                            className="font-medium bg-secondary text-primary hover:opacity-90 py-2 px-3 rounded-md"
+                        >
+                            Login / Register
+                        </Link>
                     </Link>
                     <Link className="font-medium  text-white hover:bg-white py-2 px-2 rounded-md hover:text-primary text-sm">
                         Galery

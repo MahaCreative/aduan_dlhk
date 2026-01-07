@@ -29,10 +29,10 @@ export default function ForgotPassword() {
 
             {/* card */}
             <div className="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
-                <h1 className="text-3xl font-bold text-center text-blue-800">
+                <h1 className="text-3xl font-bold text-center text-primary">
                     Forgot Password
                 </h1>
-                <p className="text-center text-blue-800/70 mt-1 mb-6">
+                <p className="text-center text-primary/70 mt-1 mb-6">
                     Enter your email to reset your password
                 </p>
 
@@ -45,7 +45,7 @@ export default function ForgotPassword() {
                         <Link
                             as="button"
                             href={route("login")}
-                            className="inline-block px-6 py-2 rounded-lg bg-blue-700 text-white font-semibold hover:opacity-90 transition"
+                            className="inline-block px-6 py-2 rounded-lg bg-primary text-white font-semibold hover:opacity-90 transition"
                         >
                             Back to Login
                         </Link>
@@ -65,14 +65,14 @@ export default function ForgotPassword() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
-                                className="mt-1 w-full rounded-lg border-slate-300 focus:ring-blue-700 focus:border-blue-700"
+                                className="mt-1 w-full rounded-lg border-slate-300 focus:ring-primary focus:border-primary"
                                 placeholder="you@example.com"
                             />
                         </div>
 
                         <button
                             type="submit"
-                            className="w-full py-2.5 rounded-lg bg-gradient-to-r from-blue-700 to-blue-900 text-white font-semibold hover:opacity-90 transition"
+                            className="w-full py-2.5 rounded-lg bg-gradient-to-r from-primary to-green-950 text-white font-semibold hover:opacity-90 transition"
                         >
                             Send Reset Link
                         </button>
@@ -80,7 +80,7 @@ export default function ForgotPassword() {
                         <Link
                             as="button"
                             href={route("login")}
-                            className="w-full text-sm text-blue-700 hover:underline mt-2"
+                            className="w-full text-sm text-primary hover:underline mt-2"
                         >
                             Back to Login
                         </Link>
