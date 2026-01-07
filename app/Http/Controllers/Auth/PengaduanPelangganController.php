@@ -61,8 +61,57 @@ class PengaduanPelangganController extends Controller
             'solusi_pengangan' => $request->solusi_pengangan,
             'foto_penanganan' => $foto_penanganan,
         ]);
+        $pelanggan = User::where('id', $pengaduan->pelanggan_id)->first();
+        //kirim notif ke pelanggan
+        if ($pelanggan) {
+            $message = "Pengaduan dengan kode " . $pengaduan->kd_pengaduan . " telah diproses dengan status " . $request->status_pengaduan .
+                ". Silahkan cek aplikasi untuk melihat detailnya.";
+            $this->sending_message($pengaduan, $message, $pelanggan->telp);
+        }
     }
 
+    public function sending_message($pengaduan, $message, $phone)
+    {
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array(
+                'target' => $phone,
+                'message' => $message,
+                'schedule' => 0,
+                'typing' => false,
+                'delay' => '2',
+                'countryCode' => '62',
+                // 'file' => new CURLFile("localfile.jpg"),
+
+                'followup' => 0,
+            ),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: 9KcFZGU1aaUNvTxHE5oi'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        if (curl_errno($curl)) {
+            $error_msg = curl_error($curl);
+        }
+        curl_close($curl);
+
+        if (isset($error_msg)) {
+            echo $error_msg;
+        }
+        echo $response;
+    }
     public function form_report(Request $request)
     {
         $jenis_pengaduan = JenisPengaduan::latest()->get();

@@ -110,7 +110,7 @@ class LayananAduanController extends Controller
                 'followup' => 0,
             ),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: oAMf+vjnQeV9gmqAGRb8'
+                'Authorization: 9KcFZGU1aaUNvTxHE5oi'
             ),
         ));
 
@@ -153,7 +153,7 @@ class LayananAduanController extends Controller
                 'followup' => 0,
             ),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: oAMf+vjnQeV9gmqAGRb8'
+                'Authorization: 9KcFZGU1aaUNvTxHE5oi'
             ),
         ));
 
